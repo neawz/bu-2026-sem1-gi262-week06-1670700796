@@ -67,12 +67,28 @@ namespace MidtermExam.Prob03
                     return true;
                 }
             }
-            else
+            else if (turnQueue.Last.Value == targetPlayer)
             {
-                turnQueue.Remove(targetPlayer);
+                turnQueue.RemoveLast();
                 var afterNode = turnQueue.Find(afterPlayer);
                 if (afterNode != null)
                 {
+                    turnQueue.AddAfter(afterNode, targetPlayer);
+                    return true;
+                }
+            }
+            else if (turnQueue.Last.Value == afterPlayer)
+            {
+                turnQueue.Remove(targetPlayer);
+                turnQueue.AddLast(targetPlayer);
+                return true;
+            }
+            else
+            {
+                var afterNode = turnQueue.Find(afterPlayer);
+                if (afterNode != null)
+                {
+                    turnQueue.Remove(targetPlayer);
                     turnQueue.AddAfter(afterNode, targetPlayer);
                     return true;
                 }

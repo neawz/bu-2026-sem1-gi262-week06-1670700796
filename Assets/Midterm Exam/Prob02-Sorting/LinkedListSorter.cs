@@ -13,6 +13,30 @@ namespace MidtermExam.Prob02
         public LinkedList<int> SortAscending(LinkedList<int> list)
         {
             // TODO: Implement sorting algorithm for LinkedList<int> (Ascending)
+            if (list == null || list.Count <= 1)
+            {
+                return list;
+            }
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                for (int j = 0; j < list.Count - i - 1; j++)
+                {
+                    var currentNode = list.First;
+                    for (int k = 0; k < j; k++)
+                    {
+                        currentNode = currentNode.Next;
+                    }
+
+                    if (currentNode.Value > currentNode.Next.Value)
+                    {
+                        int temp = currentNode.Value;
+                        currentNode.Value = currentNode.Next.Value;
+                        currentNode.Next.Value = temp;
+                    }
+                }
+            }
+            
             return list;
         }
 
@@ -24,6 +48,30 @@ namespace MidtermExam.Prob02
         public LinkedList<int> SortDescending(LinkedList<int> list)
         {
             // TODO: Implement sorting algorithm for LinkedList<int> (Descending)
+            if (list == null || list.Count <= 1)
+            {
+                return list;
+            }
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                for (int j = 0; j < list.Count - i - 1; j++)
+                {
+                    var currentNode = list.First;
+                    for (int k = 0; k < j; k++)
+                    {
+                        currentNode = currentNode.Next;
+                    }
+
+                    if (currentNode.Value < currentNode.Next.Value)
+                    {
+                        int temp = currentNode.Value;
+                        currentNode.Value = currentNode.Next.Value;
+                        currentNode.Next.Value = temp;
+                    }
+                }
+            }
+
             return list;
         }
     }
